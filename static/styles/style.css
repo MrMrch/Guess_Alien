@@ -1,0 +1,79 @@
+body {
+    font: Lucida;
+}
+
+h2 {
+    font-family: "Lucida Console", serif  ;
+    font-size: 20px;
+
+}
+
+h1{
+    font-family: "Lucida Console", serif  ;
+    font-size: 50px;
+}
+
+head{
+    font-family: "Garamond", serif  ;
+
+}
+
+img{
+    max-width: 15%;
+    height: auto;
+    /*display: block;*/
+    }
+
+.elimg{
+    max-width: 15%;
+    height: auto;
+    opacity: 0.15;
+}
+
+.pickimg{
+    max-width: 15%;
+    height: auto;
+    opacity:1;
+    }
+
+.pickimg:hover{
+    opacity: 0.45;
+    transition:opacity 0.25s;
+    background: green;
+    color:blue;
+
+}
+
+
+.but5ton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+#parent{
+    display: flex;
+}
+
+.col{
+      flex: 100%;
+}
+
+.lineup{
+    display: inline-block;
+    border: 0 none;
+    padding: 0;
+    width: auto;
+    /*float: left;*/
+
+}

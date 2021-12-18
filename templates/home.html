@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Alien Murderers</h1>
+    <!--<button href >RESTART</button>-->
+
+    <head>
+        {% for alien in aliens %}
+            {% if alien.inplay %}
+                <img src="{{ url_for('static', filename='images/')}}{{alien.image}}">
+            {% else %}
+                <img class=elimg  src="{{ url_for('static', filename='images/')}}{{alien.image}}">
+            {% endif %}
+        {% endfor %}
+    </head>
+    <h2>
+        <div>{{question}}</div>
+        <form action="/home" method="post">
+            <button type=submit name="answer" value="yes">LET'S PLAY</button>
+            <!--<button value="no" >NO</button>-->
+        </form>
+    </h2>
+{% endblock %}

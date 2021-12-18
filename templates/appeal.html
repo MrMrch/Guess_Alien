@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Verdict
+{% endblock %}
+
+{% block content %}
+    <h1>I know your suspect!</h1>
+    <h1>It's {{guilty[0].name}}</h1>
+
+    <head>
+    </head>
+    <h2>
+        <div id="parent">
+            <div class="col">
+                <img src="{{ url_for('static', filename='images/')}}{{guilty[0].image}}"><br>
+                You made me guess:  {{ guilty[0].name }}
+            </div>
+
+            <div class="col">
+                <img src="{{ url_for('static', filename='images/')}}{{culprit.image}}"><br>
+                But your alien was {{culprit.name}}
+            </div>
+        </div>
+
+        <div>You Lose!</div>
+
+        <div>Let's see why I didn't guess</div>
+        {% for element in answers_list %}
+            {{ element }} <br>
+        {% endfor %}
+    </h2>
+{% endblock %}

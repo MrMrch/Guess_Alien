@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Verdict
+{% endblock %}
+
+{% block content %}
+    <h1>I know your suspect!</h1>
+    <h1>It's {{guilty[0].name}}</h1>
+
+    <head>
+        <img src="{{ url_for('static', filename='images/')}}{{guilty[0].image}}">
+    </head>
+    <h2>
+        <div>Did I guess?</div>
+
+        <button>
+            <a href="/endgame">
+                <div class="button">YES</div>
+            </a>
+        </button>
+
+        <button>
+            <a href="/pick_alien">
+                <div class="button">NO</div>
+            </a>
+        </button>
+
+    </h2>
+{% endblock %}
+
+

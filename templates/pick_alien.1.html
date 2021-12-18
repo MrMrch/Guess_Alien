@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Game On!
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Alien Murderers</h1>
+    <head>
+        <form action="/appeal" method="post">
+            {% for alien in aliens %}
+                <button name="picked" value="{{alien.name}}" href="/appeal">
+                    <img type=submit class=pickimg src="{{ url_for('static', filename='images/')}}{{alien.image}}" >
+                </button>
+            {% endfor %}
+        </form>
+    </head>
+    <h2>
+        <div>Please click on the alien you had chosen</div>
+    </h2>
+{% endblock %}

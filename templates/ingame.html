@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Game On!
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Alien Murderers</h1>
+    <head>
+        {% for alien in aliens %}
+            {% if alien.inplay %}
+                <img src="{{ url_for('static', filename='images/')}}{{alien.image}}">
+            {% else %}
+                <img class=elimg  src="{{ url_for('static', filename='images/')}}{{alien.image}}">
+            {% endif %}
+        {% endfor %}
+    </head>
+    <h2>
+        <div>{{question}}</div>
+        <form action="/ingame" method="post">
+            <button type=submit name="answer" value="yes">YES</button>
+            <button type=submit name="answer"  value="no" >NO</button>
+        </form>
+    </h2>
+{% endblock %}
