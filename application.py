@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, Response, flash
 import os
 from engine import *
+# del culprit
 
 app = Flask(__name__)
 
@@ -12,6 +13,8 @@ def home():
     attr_in_play = create_attr_in_play()
     for attr in attr_in_play:
         print(attr)
+    q_built_prof_dict = {'name' : [], 'skin' : [], 'suit' : [], 'hairlen' : [],  'haircolor' : [], 'glasses' : [], 'hat' : [], 'image' : [], 'inplay' : []}
+    print(q_built_prof_dict)
     # print(q_built_prof_dict)
     global answers_list
     answers_list.clear()
@@ -40,6 +43,7 @@ def home():
 
 def ingame():
 
+    global q_built_prof_dict
     # if request.method == "GET":
     #     question, attr_in_play = gen_master_question(aliens)
     #     return render_template('ingame.html', aliens=aliens, question = question)
@@ -77,6 +81,7 @@ def ingame():
 
         else:
             question, (attr, trait) = gen_master_question(aliens)
+            print(q_built_prof_dict)
 
             return render_template('ingame.html', aliens=aliens, question = question)
     else:
@@ -145,11 +150,11 @@ def pick_alien():
     # guilty = gameverdict_()
     # culprit = request.args.get('picked')
     value = request.form.get('picked')
-    global culprit
+    culprit = ""
     for alien in aliens:
         if alien.name == value:
             culprit = alien
-    print(str(culprit.name))
+    # print(str(culprit.name))
     return render_template('pick_alien.html', aliens=aliens, culprit=culprit)
 
 @app.route('/appeal', methods=['GET', 'POST'])
@@ -173,14 +178,14 @@ def appeal():
     # guilty, answers_list = appeal_()
     # culprit = aliens[1]
 
-    guilty, answers_list = appeal_()
+    guilty, answers_list = appeal_(culprit)
     # guilty ="dwight"
     # answers_list = ("baba", "tata")
     print(culprit.name)
     print("@@@@@@@@@@@@@@@@ END @@@@@@@@@@@@@@")
     print(answers_list)
-    for attr, val in culprit:
-        print(attr, val)
+    # for attr, val in culprit:
+    #     print(attr, val)
 
     # q_built_prof_dictitems = q_built_prof_dictitems
     return render_template('appeal.html', aliens=aliens, resolution = "You are lying!", guilty = guilty, culprit = culprit, answers_list = answers_list, q_built_prof_dict = q_built_prof_dict)
