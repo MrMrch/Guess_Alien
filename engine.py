@@ -1,5 +1,6 @@
 import random
 from collections import Counter, namedtuple
+# from application import culprit
 
 class Alien(object):
     def __init__(self, name, skin, suit, hairlen, haircolor, glasses, hat, image, inplay=True):
@@ -57,8 +58,8 @@ nixi = Alien("Nixi", "green", "red", "short", "pink", False, False, "IMG-0938.jp
 # nixi = Alien("Nixi", "green", "red", "short", "pink", False, False, "IMG-0938.jpg") ###
 
 # aliens = [axi, bexi, cixi, dixi]
-# aliens = [axi, bexi, cixi, dixi, exi, fixi, gixi, hexi, ixi, lixi, mixi, nixi]
-aliens = [bexi, cixi, dixi, exi]
+aliens = [axi, bexi, cixi, dixi, exi, fixi, gixi, hexi, ixi, lixi, mixi, nixi]
+# aliens = [bexi, cixi, dixi, exi]
 
 #print aliens in play
 def print_aliens_in_play():
@@ -245,7 +246,7 @@ def ingameupdates(answer, attr, trait):
 
 #The player is given a card
 #culprit = random.choice(aliens)
-culprit = aliens[1]
+# culprit = aliens[1]
 # culprit = Alien("", "", "", "", "", True, True, "", False) ###
 
 # print("your alien is " + culprit.name)
@@ -282,10 +283,9 @@ def gameverdict_():
 
 answers_list = []
 
-def appeal_():
+def appeal_(culprit):
     global q_built_prof_dict
     global answers_list
-    global culprit
     guilty = [x for x in aliens if x.inplay == True]
     print("my suspect is: " + str(guilty[0].name))
     # answers_list.append("Let's check. Your alien was " + culprit.name)
@@ -332,8 +332,11 @@ def appeal_():
             # answers_list.append("testpart")
             answers_list.append(f"You said it had {guess.upper()} {name.upper()} instead it has {value.upper()} {name.upper()}")
             # print(f"You said it had {guess.upper()} {name.upper()} instead it has {value.upper()} {name.upper()}")
+            print("================================================")
+            print(answers_list)
 
             continue
+        
         print(answers_list)
     return guilty, answers_list
 
